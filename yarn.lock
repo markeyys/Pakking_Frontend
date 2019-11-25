@@ -4931,10 +4931,9 @@ google-map-react@^1.1.5:
     prop-types "^15.5.6"
     scriptjs "^2.5.7"
 
-google-maps-react@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/google-maps-react/-/google-maps-react-2.0.2.tgz#e03fbba032fe570fb38744bf9cd10b946c591cae"
-  integrity sha512-6cYauGwt22haDUrWxKQ6yoNOqjiuxHo8YYcmb+aBvNICokdXmZOUB6Ah4vD5VexMVlrwP2PFqA/D8sHpEB52KA==
+google-maps-react@fullstackreact/google-maps-react#master:
+  version "2.0.3"
+  resolved "https://codeload.github.com/fullstackreact/google-maps-react/tar.gz/c70a04f668b644a126071c73b392b6094a430a2a"
 
 got@^8.3.2:
   version "8.3.2"
