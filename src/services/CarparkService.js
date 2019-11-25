@@ -13,7 +13,7 @@ const CarparkService = {
       return axios.get(API_URL + `/api/carparks?id=${ id }`, {headers: AuthService.authHeader() });
   },
   addFavouriteCarpark: function(id){
-      return axios.post(API_URL + `/api/${ id }/favourte`, {headers: AuthService.authHeader() });
+      return axios.post(API_URL + `/api/carparks/${ id }/favorite`, null, {headers: AuthService.authHeader() });
   }
 
 }
