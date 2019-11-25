@@ -7,13 +7,16 @@ const CarparkService = {
        return axios.get(API_URL + '/api/carparks', {headers: AuthService.authHeader() });
   },
   searchByAddress: function(address) {
-    return axios.get(API_URL + '/api/carparks/search_by_address', { params: {q: address} }, {headers: AuthService.authHeader()});
+    return axios.get(API_URL + '/api/carparks/search_by_address', {headers: AuthService.authHeader(), params: {q: address} });
   },
   getCarpark: function(id){
       return axios.get(API_URL + `/api/carparks?id=${ id }`, {headers: AuthService.authHeader() });
   },
   addFavouriteCarpark: function(id){
-      return axios.post(API_URL + `/api/${ id }/favourte`, {headers: AuthService.authHeader() });
+      return axios.post(API_URL + `/api/carparks/${ id }/favorite`,null, {headers: AuthService.authHeader() });
+  },
+  likeCarpark: function(id){
+    return axios.post(API_URL + `/api/carparks/${ id }/like`,null, {headers: AuthService.authHeader() });
   }
 
 }
