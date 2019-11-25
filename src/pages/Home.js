@@ -13,15 +13,19 @@ class HomePage extends Component {
       constructor(props){
 
         super(props);
+        console.log('test')
 
         this.state = {
           userLocation: {
             lat: 59.55,
             lng: 30.33
           },
-          loading: true,
+          loading: false,
           zoom: 15,
-          carparks: []
+          carparks: [],
+          selectedCarpark: {},
+          showingInfoWindow: false,
+          activeMarker: {}
         }
       }
 
@@ -36,10 +40,32 @@ class HomePage extends Component {
     }
 
 
+    onMarkerClick = (props, marker, e) =>{
 
-      componentDidMount(props){
+      console.log(props);
+      this.setState({
+        selectedCarpark: props,
+        activeMarker: marker,
+        showingInfoWindow: true
+      });
+    }
 
-        this.getCarparks();
+
+    onMapClicked = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
+  };
+
+
+
+      async componentDidMount(){
+
+
+        await this.getCarparks()
 
         navigator.geolocation.getCurrentPosition(
           position => {
@@ -62,39 +88,38 @@ class HomePage extends Component {
     render(){
 
       // console.log(this.state.carparks);
-
       const { userLocation, zoom, loading } = this.state;
+
+      console.log(userLocation);
 
       return (
           <Main>
              <div style={{ height: '100vh', width: '100%' }}>
 
-                <Map google={this.props.google} zoom={15}>
+                <Map google={this.props.google} zoom={20} center={{
+                  lat: userLocation.lat,
+                  lng: userLocation.lng
+                }} onClick={this.onMapClicked}>
 
                     {this.state.carparks.map(carpark => (
-                      <Marker position = {{lat: carpark.lat, lng: carpark.long }} />
+                      <Marker
+                      key = {carpark.carparkNo}
+                      title = {carpark.address}
+                      parkingStart= {{start: carpark.parkingStart, end: carpark.parkingEnd}}
+                      onClick={this.onMarkerClick}
+                      position = {{lat: carpark.lat, lng: carpark.long }} />
                     ))}
+
+                    <InfoWindow
+                      marker={this.state.activeMarker}
+                      visible={this.state.showingInfoWindow}>
+                        <div>
+                          <h4>{this.state.selectedCarpark.title}</h4>
+                        </div>
+                    </InfoWindow>
 
                 </Map>
 
-
-
-                {/* <GoogleMapReact
-                  bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLEAPI }}
-                  defaultCenter={userLocation}
-                  defaultZoom={zoom}
-                >
-                  {this.state.carparks.map(carpark => (
-                      <GoogleMapReact.Marker
-                        title={carpark.address}
-                        name={carpark.address}
-                        position={{ lat: carpark.lat, lng: carpark.long }}
-                      />
-                  ))}
-
-
-
-                </GoogleMapReact> */}
 
             </div>
           </Main>
@@ -102,6 +127,11 @@ class HomePage extends Component {
     }
 }
 
+
+const LoadingContainer = (props) => (
+  <div>Fancy loading container!</div>
+)
+
 export default GoogleApiWrapper({
-  apiKey: (process.env.REACT_APP_GOOGLEAPI)
+  apiKey: process.env.REACT_APP_GOOGLEAPI
 })(HomePage)
