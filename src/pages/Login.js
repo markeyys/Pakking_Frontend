@@ -65,7 +65,7 @@ class LoginForm extends Component {
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Link to='/'>
-              <Image src='/assets/images/logo.png' size='tiny' centered />
+              <Image src='../assets/images/pakking.png' size='tiny' centered />
             </Link>
 
             <Header as='h2' color='teal' textAlign='center'>

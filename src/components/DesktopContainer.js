@@ -27,7 +27,7 @@ class DesktopContainer extends Component {
 
 
                   <Menu.Item as={Link} to='/map'>Home</Menu.Item>
-                  <Menu.Item as={Link} to='/about'>About</Menu.Item>
+                  <Menu.Item as={Link} to='/favourite'>Favourite Carpark</Menu.Item>
                   <Menu.Item as={Link} to='/graph'>Analytics</Menu.Item>
                   <Dropdown item text='My Account'>
                     <Dropdown.Menu>

@@ -57,7 +57,7 @@ class RegisterForm extends Component {
           <Grid.Column style={{ maxWidth: 450 }}>
 
             <Link to='/'>
-              <Image src='/assets/images/logo.png' size='tiny' centered />
+              <Image src='../assets/images/pakking.png' size='tiny' centered />
             </Link>
 
             <Header as='h2' color='teal' textAlign='center'>
