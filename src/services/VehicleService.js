@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { API_URL } from '../config';
+import AuthService from '../services/AuthService'
+
 
 const VehicleService = {
   AllVehicles: function() {
@@ -15,7 +17,7 @@ const VehicleService = {
     return axios.delete(API_URL + `/api/vehicles/${ id }`);
   },
   setMainVehicle: function(id){
-      return axios.post(API_URL + `/api/vehicles/${ id }/set_main`);
+      return axios.post(API_URL + `/api/vehicles/${ id }/set_main`, null, {headers: AuthService.authHeader() });
   }
 
 }

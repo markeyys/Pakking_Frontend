@@ -7,23 +7,33 @@ import { connect } from 'react-redux';
 
 // const LandingPage = () => (
 //   <Main>
-    
+
 //   </Main>
 // )
 
 class LandingPage extends React.Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {}
 		this.state.carparks = props.carparks
 		console.log(this.state.carparks)
 	}
 
    renderTableHeader() {
-      let header = Object.keys(this.state.carparks[0])
-      return header.map((key, index) => {
-         return <th key={index}>{key.toUpperCase()}</th>
-      })
+
+	return <React.Fragment>
+		<th>carpark number</th>
+		<th>Likes</th>
+		<th>address</th>
+		<th>Parking Duration Availability</th>
+		<th>Parking Start</th>
+		<th>Parking End </th>
+		<th>Carpark Type</th>
+		<th>HDB</th>
+		<th>Delete</th>
+	</React.Fragment>
+
+
    }
 
    renderTableData() {
@@ -39,8 +49,6 @@ class LandingPage extends React.Component {
     		   <td>{parkingend}</td>
     		   <td>{carparktype}</td>
     		   <td>{hdb.toString()}</td>
-    		   <td>{lat}</td>
-    		   <td>{long}</td>
     		   <td id="c22">
 		          <button id="btn2" onClick={this.delete1(index)}>Delete</button>
 		       </td>
@@ -73,7 +81,7 @@ class LandingPage extends React.Component {
    render() {
       return (
          <Main>
-         	{this.state.carparks.length > 0 ? <React.Fragment>
+         	{this.state.carparks ? <React.Fragment>
 	            <h1 id='title'>Favourite Carpark</h1>
 	            <table id='carpark'>
 	               <tbody>

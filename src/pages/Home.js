@@ -153,10 +153,14 @@ class HomePage extends Component {
         const new_carpark = this.state.carparks.slice()
         if (response.data.liked){
           new_carpark[index] = {
-            ...carpark,likes: carpark.likes + 1}
+            ...carpark,
+            likes: (carpark.likes || 0) + 1
+          }
         }else {
           new_carpark[index] = {
-            ...carpark,likes: carpark.likes - 1}
+            ...carpark,
+            likes: (carpark.likes || 0) - 1
+          }
         }
 
        this.setState({
@@ -234,9 +238,17 @@ class HomePage extends Component {
         if (this.state.searchValue.length < 1) return
         CarparkService.searchByAddress(value).then((results) => {
           const search_results = results.data.map((result) => {
+            console.log(result);
+            let parkingStart = 'No Time'
+            let parkingEnd = 'No Time';
+            if (result.parkingstart){
+              parkingStart = result.parkingstart.toString()
+            }
 
-            let parkingStart = result.parkingstart.toString()
-            let parkingEnd = result.parkingend.toString()
+            if (result.parkingend){
+              parkingEnd = result.parkingend.toString()
+            }
+
             if (parkingStart.length < 4){
               parkingStart = '0' + parkingStart
             }
@@ -321,7 +333,7 @@ class HomePage extends Component {
 
                     {this.renderMarker()}
 
-                    <InfoWindow
+                    <InfoWindowEx
                       marker={this.state.activeMarker}
                       visible={this.state.showingInfoWindow}>
                         <div>
@@ -333,11 +345,10 @@ class HomePage extends Component {
                           <h2>Lots: {selectedCP.availability.lotsavailable ? selectedCP.availability.lotsavailable : 0}/
                           {selectedCP.availability.totallots}</h2>
                           <Button onClick={this.likeCarpark(selectedCarpark)} icon primary>
-                            <Icon name='heart' />
                           Like</Button>
-                          <Button onClick={this.favouriteCarpark(selectedCarpark)} icon secondary> <Icon name='add' />Favourite Carpark</Button>
+                          <Button onClick={this.favouriteCarpark(selectedCarpark)}>Favourite Carpark</Button>
                         </div>
-                    </InfoWindow>
+                    </InfoWindowEx>
 
 
 
