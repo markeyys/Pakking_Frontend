@@ -4,10 +4,9 @@ import { Button, Card, Radio, Icon, Form, Grid, Header, Image, Message, Segment,
  Loader } from 'semantic-ui-react'
 import VehicleService from '../services/VehicleService';
 import Car from "../images/car.jpeg";
-import Motor from "../images/motor.jpeg"
-import Heavy from "../images/heavy.jpg"
-import Modal from 'react-modal';
-import ReactDOM from 'react-dom';
+import Motor from "../images/motor.jpeg";
+import Heavy from "../images/heavy.jpg";
+
 
 
 class VehicleCard extends React.Component{
@@ -17,7 +16,7 @@ class VehicleCard extends React.Component{
             vehicles: [],
             showDelModal: false,
             vehicleno: ""
-            
+
         }
 
         this.handleODelModal = this.handleODelModal.bind(this);
@@ -32,7 +31,7 @@ class VehicleCard extends React.Component{
         .then(res => {
             const vehicles = res.data
             this.setState({
-                vehicles
+                vehicles: vehicles
             })
         })
     }
@@ -41,7 +40,7 @@ class VehicleCard extends React.Component{
     handleODelModal () {
         this.setState({ showDelModal: true });
     }
-    
+
     handleCDelModal () {
         this.setState({ showDelModal: false });
     }
@@ -68,17 +67,18 @@ class VehicleCard extends React.Component{
     render(){
         return this.state.vehicles.map((vehicle, i) => {
             let picture;
-            if(vehicle.type == "C"){
+            console.log(vehicle.type);
+            if(vehicle.type === 'C'){
                 picture = Car;
             }
-            else if(vehicle.type == "M"){
+            else if(vehicle.type === 'M'){
                 picture = Motor;
             }
-            else if(vehicle.type == "H"){
+            else if(vehicle.type === 'H'){
                 picture = Heavy;
             }
 
-        return <Grid.Column width={4} key={i}>       
+        return <Grid.Column width={4} key={i}>
                     <Card>
                         <Image src={picture} wrapped ui={false} />
                         <Card.Content>
@@ -87,6 +87,7 @@ class VehicleCard extends React.Component{
                             {vehicle.type}
                             </Card.Meta>
                             <Card.Description>
+                                {vehicle.main ? 'Main Vehicle' : ''}
                             </Card.Description>
                         </Card.Content>
                         <Card.Content extra>
@@ -94,9 +95,9 @@ class VehicleCard extends React.Component{
                              <Button attached='right' onClick={this.onDeleteVeh(vehicle.vehicleno)}>Delete</Button>
                         </Card.Content>
                     </Card>
-                </Grid.Column>    
-            }   
-                
+                </Grid.Column>
+            }
+
             );
     }
 }

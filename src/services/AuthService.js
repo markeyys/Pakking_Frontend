@@ -38,7 +38,18 @@ const AuthService = {
   },
   authHeader: function () {
     return { Authorization: this.getToken() }
+  },
+  updateProfile: function(key, value){
+     return axios.put(API_URL + '/api/users/update_profile',{
+        key: key,
+        value: value
+      }, { headers: this.authHeader() });
+
+
+
   }
+
+
 }
 
 export default AuthService
