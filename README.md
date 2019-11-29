@@ -12,8 +12,6 @@ Ensure the backend code is running at (http://localhost:5000) before running yar
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
 ### `Add the .env file` . 
 To get the API_Key from Google  https://developers.google.com/maps/documentation/embed/get-api-key. This will display the map
