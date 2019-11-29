@@ -1,8 +1,6 @@
-import React, {useState, Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Main from './Main';
-import Geocoder from "react-map-gl-geocoder";
-import { geolocated } from "react-geolocated";
 import {Map, InfoWindow, Marker, GoogleApiWrapper, Circle} from 'google-maps-react';
 import CarparkService from '../services/CarparkService';
 import {  Button, Grid, Search, Label, Icon} from 'semantic-ui-react'
@@ -130,12 +128,7 @@ class HomePage extends Component {
 
   }
 
-
-
-
-
-
-
+  // Add favourite Carpark
   favouriteCarpark(index){
     return () => {
       const carpark = this.state.carparks[index];
@@ -146,6 +139,7 @@ class HomePage extends Component {
 
   }
 
+  // Like a carpark
   likeCarpark(index){
     return () => {
       const carpark = this.state.carparks[index];
@@ -207,7 +201,7 @@ class HomePage extends Component {
       ))
     }
 
-
+    // Handle the result being added
     handleResultSelect = (e, { result }) => {
 
 
@@ -229,6 +223,7 @@ class HomePage extends Component {
 
     }
 
+    // Search display
     handleSearchChange = (e, { value }) => {
       this.setState({ searchLoading: true, searchValue: value })
 
@@ -283,7 +278,6 @@ class HomePage extends Component {
 
     render(){
 
-      // console.log(this.state.carparks);
       const { searchLoading, searchResults, searchValue, displayCircle, userLocation, zoom, loading, carparks, selectedCarpark, circle_coords } = this.state;
 
       if (loading){
@@ -353,9 +347,6 @@ class HomePage extends Component {
 
 
                 </Map>
-
-
-
 
             </div>
           </Main>

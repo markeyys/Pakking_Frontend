@@ -5,11 +5,6 @@ import Main from './Main';
 import CarparkService from '../services/CarparkService'
 import { connect } from 'react-redux';
 
-// const LandingPage = () => (
-//   <Main>
-
-//   </Main>
-// )
 
 class LandingPage extends React.Component {
 	constructor(props) {
@@ -63,13 +58,10 @@ class LandingPage extends React.Component {
    		try{
    			CarparkService.addFavouriteCarpark(carparkno)
 			  	.then(res => {
-			  		// const carparks = res.data
-			  		// console.log(carparks)
 			  	})
    		}catch(err){
    			alert(err.message);
    		}
-   		//document.getElementById('carpark').deleteRow(index)
    		const newCarparks = this.state.carparks.slice()
    		newCarparks.splice(index, 1)
 	    this.setState({
@@ -97,7 +89,6 @@ class LandingPage extends React.Component {
 }
 
 const mapStateToProps = state => {
-	//console.log(state.user)
 	return {
 	  carparks: state.user.profile.favoriteCarparks,
 	}

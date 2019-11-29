@@ -24,8 +24,6 @@ class DesktopContainer extends Component {
             {user.isAuthenticated
               ?
               <Menu.Menu position='right'>
-
-
                   <Menu.Item as={Link} to='/map'>Home</Menu.Item>
                   <Menu.Item as={Link} to='/favourite'>Favourite Carpark</Menu.Item>
                   <Menu.Item as={Link} to='/graph'>Analytics</Menu.Item>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { API_URL } from '../config';
 import AuthService from '../services/AuthService'
 
-
+// This gets the API-endpoint from the Vehicle, backend
 const VehicleService = {
   AllVehicles: function() {
        return axios.get(API_URL + '/api/vehicles',  { headers: AuthService.authHeader() });

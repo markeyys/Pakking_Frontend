@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Button, Card, Radio, Icon, Form, Grid, Header, Image, Message, Segment,
- Loader } from 'semantic-ui-react'
+import { Button, Card, Grid, Image } from 'semantic-ui-react'
 import VehicleService from '../services/VehicleService';
 import Car from "../images/car.jpeg";
 import Motor from "../images/motor.jpeg";

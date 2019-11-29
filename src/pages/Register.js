@@ -4,6 +4,8 @@ import { Button, Form, Grid, Header, Image, Message,
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Carpark from "../images/parking.png"
+
 
 import validateInput from '../validators/register';
 import { registerUser } from '../store/actions/auth';
@@ -57,7 +59,7 @@ class RegisterForm extends Component {
           <Grid.Column style={{ maxWidth: 450 }}>
 
             <Link to='/'>
-              <Image src='../assets/images/pakking.png' size='tiny' centered />
+              <Image src={Carpark} size='tiny' centered />
             </Link>
 
             <Header as='h2' color='teal' textAlign='center'>

@@ -14,8 +14,6 @@ const datalist = []
 
 const csv = require('csvtojson')
 
-
-
 export default class Analytics extends Component {
 
     constructor(props){
@@ -50,17 +48,6 @@ export default class Analytics extends Component {
 
     render() {
 
-        // let data = []
-        // if (this.state.carparks){
-        //     data = this.state.carparks.map((carpark) => {
-        //         return {
-        //             y: carpark.likes,
-        //             label: carpark.address
-        //         }
-        //     })
-          
-        // }
-
         const { carparks } = this.state;
 
         const top5 = carparks.map((carpark => {
@@ -71,7 +58,7 @@ export default class Analytics extends Component {
         }))
 
         console.log(this.state.carparks)
-        
+
         const options = {
             animationEnabled: true,
             theme: "light2",
@@ -90,21 +77,17 @@ export default class Analytics extends Component {
             data: [{
                 type: "bar",
                 dataPoints: top5
-                
+
             }]
         }
         return (
             <Main>
                 <div>
                     {this.state.carparks ?
-                    
+
                     <CanvasJSChart options={options}
-                    /* onRef={ref => this.chart = ref} */
                     /> : null
                      }
-
-                   
-                    {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
                 </div>
             </Main>
 

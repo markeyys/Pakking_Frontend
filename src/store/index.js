@@ -17,8 +17,6 @@ const store = createStore(
 );
 
 
-
-
 export default function getStore() {
   return store;
 }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Form, Grid, Header, Image, Message, Segment,
  Loader } from 'semantic-ui-react'
+ import Carpark from "../images/parking.png"
 
 import validateInput from '../validators/login';
 import { loginUser } from '../store/actions/auth';
@@ -65,7 +66,7 @@ class LoginForm extends Component {
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Link to='/'>
-              <Image src='../assets/images/pakking.png' size='tiny' centered />
+              <Image src={Carpark} size='tiny' centered />
             </Link>
 
             <Header as='h2' color='teal' textAlign='center'>

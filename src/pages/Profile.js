@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 import Modal from 'react-modal';
 import { Button, Card, Icon, Form, Grid, Input, Image} from 'semantic-ui-react';
 import AuthService from '../services/AuthService';
-import CarparkService from '../services/CarparkService';
 import Matthew from "../images/matthew.png"
 import VehicleService from '../services/VehicleService'
 
@@ -20,7 +19,7 @@ const ProfilePage = (props) => {
   const [vehicleType, setVehicleType] = React.useState('C')
 
 
-
+  // Edit Profile
   const editProfile = () => {
       AuthService.updateProfile('email', email).then((response)=> {
         console.log(response);
@@ -31,7 +30,7 @@ const ProfilePage = (props) => {
       })
   }
 
-
+  // Add vehicle
   const addVehicle = () => {
     VehicleService.NewVehicle(vehicleNo, vehicleType).then((response)=> {
       console.log(response);
@@ -68,6 +67,7 @@ const ProfilePage = (props) => {
     </Grid>
 
 
+    {/* Display add vehicle component */}
     <Modal
         isOpen={showEdit}
         onAfterOpen={setShowEdit}

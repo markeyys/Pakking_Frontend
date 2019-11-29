@@ -7,6 +7,7 @@ import { API_URL } from '../config';
 import getStore from '../store/index'
 import { logoutUser } from '../store/actions/actionCreators'
 
+// This code handles the authentication with  the backend
 const AuthService = {
   login: function(email, password) {
     return axios.post(API_URL + '/api/sessions/login', { email: email, password: password });
